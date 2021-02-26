@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Turan-Shop/static/css/main.45ffcf45.chunk.css",
+    "main.js": "/Turan-Shop/static/js/main.e65c975f.chunk.js",
+    "main.js.map": "/Turan-Shop/static/js/main.e65c975f.chunk.js.map",
+    "runtime-main.js": "/Turan-Shop/static/js/runtime-main.c30883a0.js",
+    "runtime-main.js.map": "/Turan-Shop/static/js/runtime-main.c30883a0.js.map",
+    "static/js/2.20f89542.chunk.js": "/Turan-Shop/static/js/2.20f89542.chunk.js",
+    "static/js/2.20f89542.chunk.js.map": "/Turan-Shop/static/js/2.20f89542.chunk.js.map",
+    "static/js/3.768dfe33.chunk.js": "/Turan-Shop/static/js/3.768dfe33.chunk.js",
+    "static/js/3.768dfe33.chunk.js.map": "/Turan-Shop/static/js/3.768dfe33.chunk.js.map",
+    "index.html": "/Turan-Shop/index.html",
+    "static/css/main.45ffcf45.chunk.css.map": "/Turan-Shop/static/css/main.45ffcf45.chunk.css.map",
+    "static/js/2.20f89542.chunk.js.LICENSE.txt": "/Turan-Shop/static/js/2.20f89542.chunk.js.LICENSE.txt",
+    "static/media/logo.0dd9a510.png": "/Turan-Shop/static/media/logo.0dd9a510.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c30883a0.js",
+    "static/js/2.20f89542.chunk.js",
+    "static/css/main.45ffcf45.chunk.css",
+    "static/js/main.e65c975f.chunk.js"
+  ]
+}
