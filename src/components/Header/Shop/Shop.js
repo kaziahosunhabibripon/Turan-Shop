@@ -1,24 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import fakeData from '../../../fakeData';
 import { addToDatabaseCart, getDatabaseCart } from '../../../utilities/databaseManager';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css';
 import { Link } from 'react-router-dom';
 const Shop = () => {
-    const first15 = fakeData.slice(0, 15);
-    const [products, setProducts] = useState(first15);
+    
+    const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+
+    useEffect(() => {
+        fetch('https://whispering-mountain-22524.herokuapp.com/products')
+        .then(res=>res.json())
+        .then(data=>setProducts(data))
+    },[])
+    
     useEffect(() => {
         const saveCart = getDatabaseCart();
-        const productKeys = Object.keys(saveCart);
-        const previousCart = productKeys.map(existingKey => {
-            const product = fakeData.find(pd => pd.key === existingKey);
-            product.quantity = saveCart[existingKey];
-            return product;
+        const productKeys = Object.keys(saveCart); 
+        fetch('https://whispering-mountain-22524.herokuapp.com/productsByKeys', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(productKeys)
         })
-        setCart(previousCart);
-
+            .then(res => res.json())
+            .then(data => setCart(data))
     }, [])
 
     const handleAddProduct = (product) => {

@@ -42,7 +42,7 @@ export const handleGoogleSignIn = () => {
         var errorCode = error.code;
         var errorMessage = error.message;
         var email = error.email;
-        console.log(errorMessage, errorCode);
+        console.log(errorMessage, errorCode, email);
       });
 
   }

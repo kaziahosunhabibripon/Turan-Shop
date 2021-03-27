@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import fakeData from '../../fakeData';
 import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import Cart from '../Header/Cart/Cart';
 import ReviewItems from '../ReviewItems/ReviewItems';
@@ -8,10 +7,10 @@ import happyImage from '../../images/giphy.gif';
 import { useHistory } from 'react-router';
 const Review = () => {
     const [cart, setCart] = useState([]);
-    const [oderPlaced, setOderPlaced ]=useState(false);
+    const [oderPlaced, setOderPlaced] = useState(false);
     const history = useHistory();
-    const handleProceedCheckout = ()=>{
-       history.push('/shipment');
+    const handleProceedCheckout = () => {
+        history.push('/shipment');
     }
 
     const removeProduct = (productKey) => {
@@ -23,16 +22,19 @@ const Review = () => {
         // cart
         const saveCart = getDatabaseCart();
         const productKeys = Object.keys(saveCart);
-        const cartProduct = productKeys.map(key => {
-            const product = fakeData.find(pd => pd.key === key);
-            product.quantity = saveCart[key];
-            return product;
-        });
-        setCart(cartProduct);
-    }, [])
+        fetch('https://whispering-mountain-22524.herokuapp.com/productsByKeys', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(productKeys)
+        })
+            .then(res => res.json())
+            .then(data => setCart(data))
+    }, []);
     let thankyou;
-    if(oderPlaced){
-       thankyou = <img src={happyImage} alt="happy"></img>
+    if (oderPlaced) {
+        thankyou = <img src={happyImage} alt="happy"></img>
     }
     return (
         <div className='twin-container'>
